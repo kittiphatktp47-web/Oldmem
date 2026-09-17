@@ -403,7 +403,7 @@
         <button class="btn btn-ghost" id="notyet">No</button>
       </div>
 
-      <p class="response-disclosure">เมื่อกด ระบบจะส่งเฉพาะคำตอบและเวลาให้ Camp</p>
+      <p class="response-disclosure">ระบบจะบันทึกเฉพาะเวลาที่เปิดหน้านี้ และคำตอบที่กดให้ Camp</p>
 
       <div class="softnote">เค้าเข้าใจครับ เค้าจะให้พื้นที่และไม่รบกวนตัวเองนะ 🤍</div>
     </div>
@@ -556,26 +556,39 @@
   const replay  = document.getElementById('replay');
   const responseFeedback = document.getElementById('responseFeedback');
 
-  async function recordResponse(answer){
+  async function recordEvent(responseEvent, showFeedback = false){
     const endpoint = window.SORRY_RESPONSE_ENDPOINT;
     const validEndpoint = /^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/.test(endpoint || '');
     if(!validEndpoint){
-      responseFeedback.textContent = 'ยังไม่ได้เชื่อม Google Sheet';
-      return;
+      if(showFeedback) responseFeedback.textContent = 'ยังไม่ได้เชื่อม Google Sheet';
+      return false;
     }
 
-    responseFeedback.textContent = 'กำลังส่งคำตอบ...';
+    if(showFeedback) responseFeedback.textContent = 'กำลังส่งคำตอบ...';
     try{
       await fetch(endpoint,{
         method:'POST',
         mode:'no-cors',
         headers:{'Content-Type':'text/plain;charset=utf-8'},
-        body:JSON.stringify({answer}),
+        body:JSON.stringify({event:responseEvent}),
       });
-      responseFeedback.textContent = 'ส่งคำตอบให้ Camp แล้ว';
+      if(showFeedback) responseFeedback.textContent = 'ส่งคำตอบให้ Camp แล้ว';
+      return true;
     }catch{
-      responseFeedback.textContent = 'ส่งคำตอบไม่สำเร็จ กรุณาลองอีกครั้ง';
+      if(showFeedback) responseFeedback.textContent = 'ส่งคำตอบไม่สำเร็จ กรุณาลองอีกครั้ง';
+      return false;
     }
+  }
+
+  function recordResponse(answer){
+    return recordEvent(answer, true);
+  }
+
+  const pageViewSessionKey = 'oldmem-page-view-recorded';
+  if(!sessionStorage.getItem(pageViewSessionKey)){
+    recordEvent('PageView').then(recorded=>{
+      if(recorded) sessionStorage.setItem(pageViewSessionKey, '1');
+    });
   }
 
   // --- Falling petals ---
