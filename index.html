@@ -2,53 +2,54 @@
 <html lang="th">
 <head>
 <meta charset="utf-8" />
-<title>ขอโทษนะคะ</title>
+<title>ขอโอกาสอีกครั้งนะครับ</title>
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="icon" href="data:," />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Trirong:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Sans+Thai:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600&family=Noto+Serif+Thai:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg-1:#f6ede1;
-    --bg-2:#efe1cf;
-    --paper:#fbf5ec;
-    --ink:#2a1d1d;
-    --ink-soft:#5b4848;
-    --line:#d9c8b3;
-    --wine:#8c2c3e;
-    --wine-deep:#6e1f2e;
-    --wine-soft:#b85364;
-    --blush:#e9b6b6;
-    --leaf:#5d6b4a;
-    --leaf-soft:#8a9b6d;
-    --gold:#b88a3a;
+    --bg-1:#edf5f7;
+    --bg-2:#d8e7ec;
+    --paper:#fbfdfe;
+    --ink:#19313f;
+    --ink-soft:#4b6572;
+    --line:#c6d7dd;
+    --wine:#2f6778;
+    --wine-deep:#244f5c;
+    --wine-soft:#77a7b4;
+    --blush:#d9e9ed;
+    --leaf:#5d7561;
+    --leaf-soft:#88a28b;
+    --gold:#d38d45;
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0;height:100%;}
   body{
-    font-family:'IBM Plex Sans Thai',system-ui,sans-serif;
+    font-family:'Anuphan',system-ui,sans-serif;
     color:var(--ink);
     background:
-      radial-gradient(120% 80% at 50% 0%, #faf2e6 0%, var(--bg-1) 45%, var(--bg-2) 100%);
+      radial-gradient(70% 55% at 50% 100%, rgba(211,141,69,.3) 0%, transparent 70%),
+      linear-gradient(155deg,var(--bg-1) 0%,var(--bg-2) 100%);
     min-height:100vh;
     display:flex;
     align-items:center;
     justify-content:center;
-    overflow:hidden;
+    overflow-x:hidden;
+    overflow-y:auto;
     position:relative;
   }
 
-  /* subtle grain */
   body::before{
     content:"";
     position:fixed;inset:0;pointer-events:none;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.2  0 0 0 0 0.15  0 0 0 0 0.12  0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-    opacity:.55;mix-blend-mode:multiply;
+    background:radial-gradient(circle at 50% 100%,rgba(255,255,255,.75),transparent 45%);
   }
 
   /* corner decoration */
   .corner{
-    position:fixed;font-family:'Trirong',serif;font-style:italic;
+    position:fixed;font-family:'Noto Serif Thai',serif;
     color:var(--ink-soft);font-size:13px;letter-spacing:.04em;opacity:.7;
   }
   .corner.tl{top:28px;left:32px}
@@ -58,7 +59,7 @@
   .corner .num{font-feature-settings:"tnum";display:block;font-size:11px;opacity:.7;margin-top:2px}
 
   .stage{
-    width:min(560px,calc(100vw - 48px));
+    width:min(620px,calc(100vw - 48px));
     position:relative;
     z-index:2;
   }
@@ -67,30 +68,26 @@
   .card{
     position:relative;
     background:var(--paper);
-    border:1px solid var(--line);
-    border-radius:6px;
-    padding:56px 56px 44px;
-    box-shadow:
-      0 1px 0 #fff inset,
-      0 30px 60px -30px rgba(60,30,20,.25),
-      0 60px 100px -40px rgba(60,30,20,.15);
+    border:0;
+    border-radius:14px;
+    padding:52px 58px 42px;
+    box-shadow:0 8px 8px rgba(34,70,84,.08);
   }
-  .card::before, .card::after{
-    content:"";position:absolute;left:14px;right:14px;height:1px;background:var(--line);opacity:.6;
+  .card::before{
+    content:"";position:absolute;top:0;left:50%;width:76px;height:4px;
+    transform:translateX(-50%);background:var(--gold);border-radius:0 0 999px 999px;
   }
-  .card::before{top:14px}
-  .card::after{bottom:14px}
 
   .meta{
     display:flex;align-items:center;justify-content:space-between;
-    font-family:'IBM Plex Sans Thai';font-weight:300;
-    font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    font-family:'Anuphan',sans-serif;font-weight:500;
+    font-size:12px;letter-spacing:.02em;
     color:var(--ink-soft);
-    margin-bottom:34px;
+    margin-bottom:30px;
   }
   .meta .dot{width:5px;height:5px;border-radius:50%;background:var(--wine);display:inline-block;margin:0 8px;vertical-align:middle;opacity:.7}
 
-  /* CAT — simple stylized red cat avatar (the girl's symbol) */
+  /* Personal message icon */
   .avatar{
     width:88px;height:88px;margin:0 auto 28px;
     display:flex;align-items:center;justify-content:center;
@@ -98,57 +95,53 @@
   }
   .avatar .ring{
     position:absolute;inset:0;border-radius:50%;
-    border:1px dashed var(--wine);opacity:.4;
+    border:1px solid var(--gold);opacity:.55;
     animation:slowspin 60s linear infinite;
   }
   @keyframes slowspin{to{transform:rotate(360deg)}}
 
-  .cat{width:60px;height:60px;display:block}
+  .message-icon{width:60px;height:60px;display:block}
 
   /* tag/name */
   .nametag{
     text-align:center;
-    font-family:'Trirong',serif;font-style:italic;font-size:13px;
-    color:var(--wine);letter-spacing:.08em;margin-bottom:8px;
+    font-family:'Anuphan',sans-serif;font-size:13px;font-weight:500;
+    color:var(--wine);letter-spacing:0;margin-bottom:12px;
   }
 
   h1.title{
-    font-family:'Trirong',serif;
+    font-family:'Noto Serif Thai',serif;
     font-weight:500;
-    font-size:54px;
-    line-height:1;
+    font-size:48px;
+    line-height:1.28;
     text-align:center;
-    margin:0 0 22px;
+    margin:0 0 26px;
     color:var(--ink);
-    letter-spacing:-0.01em;
-  }
-  h1.title .amp{
-    font-style:italic;color:var(--wine);font-weight:400;
+    letter-spacing:-0.02em;
+    text-wrap:balance;
   }
 
   .body{
-    text-align:center;
+    text-align:left;
     color:var(--ink-soft);
-    font-size:16px;line-height:1.7;
-    max-width:380px;margin:0 auto 36px;
-    font-weight:300;
+    font-size:16px;line-height:1.9;
+    max-width:440px;margin:0 auto 28px;
+    font-weight:400;
+    text-wrap:pretty;
   }
-  .body strong{color:var(--ink);font-weight:500}
+  .body strong{color:var(--ink);font-weight:600}
 
   .signoff{
-    text-align:center;font-family:'Trirong',serif;font-style:italic;
-    color:var(--ink-soft);font-size:14px;margin:0 0 28px;opacity:.8;
-  }
-  .signoff::before, .signoff::after{
-    content:"";display:inline-block;width:24px;height:1px;background:var(--line);vertical-align:middle;margin:0 10px;
+    text-align:right;font-family:'Noto Serif Thai',serif;
+    color:var(--ink-soft);font-size:14px;margin:0 0 28px;
   }
 
   .actions{
-    display:flex;gap:12px;justify-content:center;
+    display:grid;grid-template-columns:1fr 1fr;gap:12px;
   }
   .btn{
-    font-family:'IBM Plex Sans Thai',sans-serif;
-    font-size:15px;font-weight:400;
+    font-family:'Anuphan',sans-serif;
+    font-size:15px;font-weight:500;
     padding:13px 28px;
     border-radius:999px;
     border:1px solid var(--line);
@@ -156,16 +149,23 @@
     color:var(--ink);
     cursor:pointer;
     transition:transform .15s ease, background .2s ease, color .2s ease, border-color .2s ease, box-shadow .25s ease;
-    letter-spacing:.02em;
+    letter-spacing:0;
   }
   .btn:hover{transform:translateY(-1px)}
   .btn-primary{
-    background:var(--wine);color:#fbf2e6;border-color:var(--wine);
-    box-shadow:0 8px 24px -10px rgba(140,44,62,.6);
+    background:var(--wine);color:#fff;border-color:var(--wine);
+    box-shadow:0 6px 8px rgba(36,79,92,.16);
   }
   .btn-primary:hover{background:var(--wine-deep);border-color:var(--wine-deep)}
-  .btn-ghost{color:var(--ink-soft)}
+  .btn-ghost{color:var(--ink-soft);background:#eef5f7}
   .btn-ghost:hover{color:var(--ink);border-color:#c4ad91}
+  .response-disclosure,
+  .response-feedback{
+    text-align:center;color:var(--ink-soft);font-size:11px;line-height:1.55;
+  }
+  .response-disclosure{margin:12px 0 0}
+  .response-feedback{margin:14px 0 0}
+  .response-feedback:empty{display:none}
 
   /* DECORATIVE leaves at corners of card */
   .leaf-corner{position:absolute;width:64px;height:64px;opacity:.7;pointer-events:none}
@@ -179,7 +179,7 @@
     padding:24px 0 8px;
   }
   .thanks h2{
-    font-family:'Trirong',serif;font-weight:500;font-style:italic;
+    font-family:'Noto Serif Thai',serif;font-weight:500;
     font-size:38px;margin:18px 0 8px;color:var(--wine);
   }
   .thanks p{
@@ -263,33 +263,31 @@
   /* small replay */
   .replay{
     margin-top:22px;background:transparent;border:none;color:var(--ink-soft);
-    font-family:'Trirong',serif;font-style:italic;font-size:13px;cursor:pointer;
+    font-family:'Anuphan',sans-serif;font-size:13px;cursor:pointer;
     text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line);
   }
   .replay:hover{color:var(--wine)}
 
   /* not-yet state */
   .softnote{
-    display:none;text-align:center;font-family:'Trirong',serif;font-style:italic;
-    color:var(--ink-soft);font-size:13px;margin-top:18px;
+    display:none;text-align:center;font-family:'Anuphan',sans-serif;
+    color:var(--ink-soft);font-size:13px;line-height:1.6;margin-top:18px;
   }
   .show-softnote .softnote{display:block;animation:fadeup .4s ease both}
 
   @media (max-width:640px){
     .corner{display:none}
     .stage{width:calc(100vw - 28px)}
-    .card{padding:36px 22px 28px;border-radius:8px}
-    .card::before,.card::after{left:10px;right:10px}
-    .meta{font-size:9.5px;letter-spacing:.12em;margin-bottom:26px;gap:8px}
+    .card{padding:36px 22px 28px;border-radius:14px}
+    .meta{font-size:10.5px;letter-spacing:0;margin-bottom:26px;gap:8px}
     .meta .dot{margin:0 5px}
     .avatar{width:74px;height:74px;margin-bottom:20px}
-    .cat{width:52px;height:52px}
+    .message-icon{width:52px;height:52px}
     .nametag{font-size:12px;margin-bottom:6px}
-    h1.title{font-size:40px;margin-bottom:16px}
-    .body{font-size:14.5px;line-height:1.65;margin-bottom:26px;max-width:none;padding:0 4px}
+    h1.title{font-size:38px;margin-bottom:18px}
+    .body{font-size:14.5px;line-height:1.8;margin-bottom:26px;max-width:none;padding:0 4px}
     .signoff{font-size:13px;margin-bottom:22px}
-    .signoff::before,.signoff::after{width:18px;margin:0 8px}
-    .actions{gap:10px;flex-wrap:wrap}
+    .actions{gap:10px}
     .btn{font-size:14.5px;padding:13px 22px;min-height:46px;flex:1 1 auto;min-width:130px}
     .leaf-corner{width:48px;height:48px}
     .leaf-corner.tl{top:-12px;left:-8px}
@@ -301,12 +299,13 @@
   }
   @media (max-width:380px){
     .card{padding:30px 18px 24px}
-    h1.title{font-size:34px}
+    h1.title{font-size:32px}
     .body{font-size:14px}
     .meta span:first-child,.meta span:last-child{font-size:9px}
+    .actions{grid-template-columns:1fr}
   }
   /* small viewport height — keep card from getting cut off */
-  @media (max-height:680px){
+  @media (max-height:820px){
     body{align-items:flex-start;padding:24px 0}
   }
   /* respect users who don't want motion */
@@ -346,23 +345,6 @@
   }
   @keyframes inkRipple{to{transform:scale(5);opacity:0}}
 
-  /* ---- forgive button grow ---- */
-  #forgive{transition:font-size .4s cubic-bezier(.34,1.56,.64,1),padding .4s cubic-bezier(.34,1.56,.64,1),box-shadow .3s ease,background .2s ease,border-color .2s ease,transform .15s ease}
-  /* ---- notyet shrink ---- */
-  #notyet{transition:transform .35s cubic-bezier(.34,1.56,.64,1),opacity .4s ease,font-size .3s ease}
-  /* ---- falling roses ---- */
-  .rose{
-    position:fixed;top:-60px;pointer-events:none;z-index:3;
-    animation:roseFall linear forwards;opacity:0;
-    user-select:none;line-height:1;
-  }
-  @keyframes roseFall{
-    0%  {opacity:0;transform:translateY(0) rotate(0deg) translateX(0)}
-    8%  {opacity:1}
-    50% {transform:translateY(56vh) rotate(calc(var(--spin,300deg)*.5)) translateX(calc(var(--dx,0px)*.4))}
-    92% {opacity:.85}
-    100%{opacity:0;transform:translateY(112vh) rotate(var(--spin,300deg)) translateX(var(--dx,0px))}
-  }
 </style>
 </head>
 <body>
@@ -387,59 +369,43 @@
 
     <div class="meta">
       <span>From Camp</span>
-      <span><span class="dot"></span>เรื่องเมื่อกี้<span class="dot"></span></span>
-      <span>To Paopei</span>
+      <span><span class="dot"></span>ขออีกหนึ่งโอกาส<span class="dot"></span></span>
+      <span>To Cream</span>
     </div>
 
     <!-- THE ASK -->
     <div class="ask">
       <div class="avatar">
         <span class="ring"></span>
-        <!-- simple stylized red cat (her symbol) -->
-        <svg class="cat" viewBox="0 0 100 100" aria-label="cute red cat">
-          <!-- ears -->
-          <path d="M16 44 L8 10 L38 36 Z" fill="#fce8ec" stroke="#c84060" stroke-width="2.2" stroke-linejoin="round"/>
-          <path d="M84 44 L92 10 L62 36 Z" fill="#fce8ec" stroke="#c84060" stroke-width="2.2" stroke-linejoin="round"/>
-          <path d="M20 42 L13 15 L35 35 Z" fill="#f0b0c0"/>
-          <path d="M80 42 L87 15 L65 35 Z" fill="#f0b0c0"/>
-          <!-- head: wide oval -->
-          <path d="M50 32 C76 30,93 46,93 62 C93 79,76 93,50 93 C24 93,7 79,7 62 C7 46,24 30,50 32Z" fill="white" stroke="#c84060" stroke-width="2.2"/>
-          <!-- forehead tabby stripes -->
-          <line x1="46" y1="40" x2="46" y2="50" stroke="#c84060" stroke-width="2.4" stroke-linecap="round"/>
-          <line x1="50" y1="38" x2="50" y2="49" stroke="#c84060" stroke-width="2.4" stroke-linecap="round"/>
-          <line x1="54" y1="40" x2="54" y2="50" stroke="#c84060" stroke-width="2.4" stroke-linecap="round"/>
-          <!-- left eye: vertical pill -->
-          <rect x="26" y="52" width="11" height="15" rx="5.5" fill="none" stroke="#c84060" stroke-width="2.2"/>
-          <!-- right eye -->
-          <rect x="63" y="52" width="11" height="15" rx="5.5" fill="none" stroke="#c84060" stroke-width="2.2"/>
-          <!-- nose: heart -->
-          <path d="M50 72 C49 69,44 70,46 74 C47.5 77,50 79,50 79 C50 79,52.5 77,54 74 C56 70,51 69,50 72Z" fill="#c84060"/>
-          <!-- whiskers: 2 per side -->
-          <path d="M3 60 Q22 65,40 69" fill="none" stroke="#c84060" stroke-width="2" stroke-linecap="round" opacity=".75"/>
-          <path d="M3 72 Q22 71,40 73" fill="none" stroke="#c84060" stroke-width="2" stroke-linecap="round" opacity=".75"/>
-          <path d="M97 60 Q78 65,60 69" fill="none" stroke="#c84060" stroke-width="2" stroke-linecap="round" opacity=".75"/>
-          <path d="M97 72 Q78 71,60 73" fill="none" stroke="#c84060" stroke-width="2" stroke-linecap="round" opacity=".75"/>
+        <svg class="message-icon" viewBox="0 0 100 100" role="img" aria-label="จดหมายจากใจ">
+          <rect x="17" y="27" width="66" height="48" rx="5" fill="#fbfdfe" stroke="#2f6778" stroke-width="2.5"/>
+          <path d="M20 32 L50 55 L80 32" fill="none" stroke="#2f6778" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M19 71 L42 50 M81 71 L58 50" fill="none" stroke="#77a7b4" stroke-width="2" stroke-linecap="round"/>
+          <path d="M50 69 C46 64 37 59 37 51 C37 43 47 41 50 48 C53 41 63 43 63 51 C63 59 54 64 50 69 Z" fill="#d38d45"/>
         </svg>
       </div>
 
-      <div class="nametag">— ถึงคนสวยที่กำลังงอน —</div>
-
-      <h1 class="title">ขอโทษ<span class="amp">นะคะ</span></h1>
+      <h1 class="title">ขอโอกาสอีกครั้งนะครับ</h1>
 
       <p class="body">
-        เมื่อกี้ <strong>พี่ผิดจริงๆครับ</strong><br/>
-        ไม่ได้ตั้งใจทำให้รู้สึกไม่โอเค<br/>
-        ขอโทษจริงนะครับ ให้อภัยพี่นะครับ
+        <strong>เค้ารู้ว่าแค่คำขอโทษอาจยังไม่พอ</strong><br/>
+        แต่เค้าอยากขอโอกาสครั้งนี้มาก ๆ จริง ๆ ครับ<br/>
+        เค้าอยากพิสูจน์ด้วยการกระทำ และอยากให้ครั้งนี้เป็นครั้งสุดท้ายที่ทำให้ตัวเองเสียใจ<br/><br/>
+        ตัวเองไม่จำเป็นต้องตอบตอนนี้ก็ได้นะครับ<br/>
+        เค้าแค่อยากให้ตัวเองได้รับรู้ความตั้งใจของเค้า<br/>
+        ไม่ว่าตัวเองจะตัดสินใจอย่างไร เค้าจะเคารพการตัดสินใจของตัวเองครับ
       </p>
 
       <div class="signoff">Camp</div>
 
       <div class="actions">
-        <button class="btn btn-primary" id="forgive">ให้อภัย</button>
-        <button class="btn btn-ghost" id="notyet">ไม่ให้อภัย</button>
+        <button class="btn btn-primary" id="forgive">Yes</button>
+        <button class="btn btn-ghost" id="notyet">No</button>
       </div>
 
-      <div class="softnote">…ก็ได้ จะรอ ไม่เร่งนะ 🤍</div>
+      <p class="response-disclosure">เมื่อกด ระบบจะส่งเฉพาะคำตอบและเวลาให้ Camp</p>
+
+      <div class="softnote">เค้าเข้าใจครับ เค้าจะให้พื้นที่และไม่รบกวนตัวเองนะ 🤍</div>
     </div>
 
     <!-- THANK YOU state with bouquet -->
@@ -572,23 +538,49 @@
         </svg>
       </div>
 
-      <h2>ขอบคุณนะคะ</h2>
-      <p>คราวหน้าจะระวังให้มากกว่านี้คับ</p>
+      <h2>ขอบคุณสำหรับโอกาสนี้นะครับ</h2>
+      <p>เค้าจะพิสูจน์ด้วยการกระทำ และจะรักษาโอกาสนี้ให้ดีที่สุดครับ</p>
       <button class="replay" id="replay">Back</button>
     </div>
+
+    <p class="response-feedback" id="responseFeedback" role="status" aria-live="polite"></p>
 
   </div>
 </main>
 
+<script src="./tracking-config.js"></script>
 <script>
   const card    = document.getElementById('card');
   const forgive = document.getElementById('forgive');
   const notyet  = document.getElementById('notyet');
   const replay  = document.getElementById('replay');
+  const responseFeedback = document.getElementById('responseFeedback');
+
+  async function recordResponse(answer){
+    const endpoint = window.SORRY_RESPONSE_ENDPOINT;
+    const validEndpoint = /^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/.test(endpoint || '');
+    if(!validEndpoint){
+      responseFeedback.textContent = 'ยังไม่ได้เชื่อม Google Sheet';
+      return;
+    }
+
+    responseFeedback.textContent = 'กำลังส่งคำตอบ...';
+    try{
+      await fetch(endpoint,{
+        method:'POST',
+        mode:'no-cors',
+        headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify({answer}),
+      });
+      responseFeedback.textContent = 'ส่งคำตอบให้ Camp แล้ว';
+    }catch{
+      responseFeedback.textContent = 'ส่งคำตอบไม่สำเร็จ กรุณาลองอีกครั้ง';
+    }
+  }
 
   // --- Falling petals ---
   function fallingPetals(){
-    const colors = ['#8c2c3e','#b85364','#e9b6b6','#fbf5ec','#6e1f2e'];
+    const colors = ['#2f6778','#77a7b4','#d9e9ed','#fbfdfe','#d38d45'];
     for(let i=0;i<28;i++){
       const p = document.createElement('span');
       p.className = 'petal';
@@ -605,60 +597,22 @@
 
   // --- Forgive ---
   forgive.addEventListener('click', ()=>{
+    recordResponse('Yes');
     card.classList.add('forgiven');
     tiltEnabled = false;
     card.style.transform = '';
     fallingPetals();
   });
 
-  // --- "ไม่ให้อภัย" → grow forgive button ---
-  let noCount = 0;
-  const bodyEl = document.querySelector('.body');
-  const progressMsgs = [
-    'เรื่องเมื่อกี้ ฉันคิดมาแล้ว <strong>ฉันผิดจริง ๆ</strong><br/>ไม่ได้ตั้งใจให้เธอรู้สึกแบบนั้น<br/>ขอแค่โอกาสได้เริ่มใหม่อีกครั้ง',
-    'โอ้ย อย่าโกรธพี่เลยนะ 😢',
-    'พี่ผิดเองนะ',
-    'เห็นมั้ยว่าปุ่มมันใหญ่ขึ้นเรื่อยๆ 🥺',
-    'กดๆ นะคะ 🙏',
-    '😭😭😭',
-    'ปุ่มใหญ่ขนาดนี้แล้วนะเธอ...',
-    '...ได้โปรดนะคะ',
-  ];
-
   notyet.addEventListener('click', ()=>{
-    noCount++;
-    const isMobile = window.innerWidth <= 480;
-    const fGrow = isMobile ? 1.8 : 2.5;
-    const pVGrow = isMobile ? 2   : 3;
-    const pHGrow = isMobile ? 5   : 8;
-
-    // grow ให้อภัย
-    forgive.style.fontSize  = `${15 + noCount * fGrow}px`;
-    forgive.style.padding   = `${13 + noCount * pVGrow}px ${28 + noCount * pHGrow}px`;
-    forgive.style.boxShadow = `0 ${8+noCount*3}px ${24+noCount*8}px -10px rgba(140,44,62,${Math.min(.9,.6+noCount*.04)})`;
-
-    // shrink ไม่ให้อภัย
-    const shrink = Math.max(.4, 1 - noCount * .08);
-    notyet.style.transform = `scale(${shrink})`;
-    notyet.style.opacity   = `${Math.max(.15, 1 - noCount * .1)}`;
-
-    // เปลี่ยน message
-    const idx = Math.min(noCount, progressMsgs.length - 1);
-    bodyEl.innerHTML = progressMsgs[idx];
+    recordResponse('No');
+    card.classList.add('show-softnote');
   });
 
   // --- Replay ---
   replay.addEventListener('click', ()=>{
     card.classList.remove('forgiven','show-softnote');
     tiltEnabled = !window.matchMedia('(pointer:coarse)').matches;
-    notyet.disabled        = false;
-    notyet.style.opacity   = 1;
-    notyet.style.transform = '';
-    forgive.style.fontSize  = '';
-    forgive.style.padding   = '';
-    forgive.style.boxShadow = '';
-    bodyEl.innerHTML        = progressMsgs[0];
-    noCount = 0;
     const els = card.querySelectorAll('.bouquet *');
     els.forEach(e=>{ e.style.animation = 'none'; });
     void card.offsetWidth;
@@ -696,42 +650,8 @@
     document.addEventListener('mouseleave', ()=>{ card.style.transform = ''; });
   }
 
-  // --- Continuous falling rose petals (SVG) ---
-  const petalColors = ['#c0392b','#e74c3c','#8c2c3e','#b85364','#922b21','#d98880','#e9b6b6'];
-  // 3 organic petal shapes for variety
-  const petalPaths = [
-    'M7 1 C11 3,14 10,11 17 C9 20,5 20,3 17 C0 10,3 3,7 1Z',
-    'M7 0 C13 4,15 12,10 19 C8 22,4 21,2 18 C-1 11,2 3,7 0Z',
-    'M7 1 C10 2,13 9,11 16 C9 21,5 22,3 18 C1 12,3 3,7 1Z',
-  ];
-  const ns = 'http://www.w3.org/2000/svg';
-
-  function spawnRose(){
-    const color = petalColors[Math.floor(Math.random()*petalColors.length)];
-    const scale = .65 + Math.random()*.85;
-    const w = Math.round(14*scale), h = Math.round(22*scale);
-    const svg = document.createElementNS(ns,'svg');
-    svg.setAttribute('viewBox','0 0 14 22');
-    svg.setAttribute('width',w);
-    svg.setAttribute('height',h);
-    svg.setAttribute('class','rose');
-    const path = document.createElementNS(ns,'path');
-    path.setAttribute('d', petalPaths[Math.floor(Math.random()*petalPaths.length)]);
-    path.setAttribute('fill', color);
-    path.setAttribute('opacity', (.65+Math.random()*.3).toFixed(2));
-    svg.appendChild(path);
-    svg.style.left = (Math.random()*106-3)+'vw';
-    svg.style.setProperty('--spin',(180+Math.random()*400)+'deg');
-    svg.style.setProperty('--dx',(Math.random()*60-30)+'px');
-    svg.style.animationDuration = (5+Math.random()*6)+'s';
-    document.body.appendChild(svg);
-    svg.addEventListener('animationend',()=>svg.remove());
-  }
-  for(let i=0;i<6;i++) setTimeout(spawnRose, i*350);
-  setInterval(spawnRose, 650);
-
   // --- Ambient dust motes ---
-  const moteColors = ['#b88a3a','#8c2c3e','#8a9b6d','#e9b6b6','#d9c8b3'];
+  const moteColors = ['#d38d45','#2f6778','#88a28b','#d9e9ed','#c6d7dd'];
   for(let i=0;i<16;i++){
     const m = document.createElement('span');
     m.className = 'mote';
